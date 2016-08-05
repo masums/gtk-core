@@ -14,6 +14,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GtkTest", "src\GtkTest\GtkT
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Gtk", "src\Gtk\Gtk.xproj", "{270DB2FF-5AE8-4F75-BCFE-0F0EA2B6514C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BC2B2C1-66F0-4DD2-AD4E-03FC117DBEFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

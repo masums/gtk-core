@@ -20,7 +20,7 @@ namespace Gtk
             public static extern void gtk_container_remove(IntPtr container, IntPtr widget);
 
             [DllImport(Libraries.Gtk)]
-            public static unsafe extern GList* gtk_container_get_children(IntPtr container);
+            public static unsafe extern glib.GList* gtk_container_get_children(IntPtr container);
         }
     }
 }

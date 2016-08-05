@@ -14,7 +14,7 @@ using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public abstract class Widget : GObject
+    public abstract partial class Widget : GObject
     {
         private IntPtr window;
         private IntPtr parent;
@@ -44,42 +44,6 @@ namespace Gtk
             }
         }
 
-        public event EventHandler<EventArgs> Destroyed
-        {
-            add
-            {
-                AddSignalHandler<EventArgs>("destroy", value, handleDestroyed);
-            }
-
-            remove
-            {
-                RemoveSignalHandler<EventArgs>(value);
-            }
-        }
-
-        private void handleDestroyed(IntPtr instance, IntPtr data, EventHandler<EventArgs> handler)
-        {
-            handler(this, new EventArgs());
-        }
-
-        public event EventHandler<EventArgs> Shown
-        {
-            add
-            {
-                AddSignalHandler<EventArgs>("show", value, handleShown);
-            }
-
-            remove
-            {
-                RemoveSignalHandler<EventArgs>(value);
-            }
-        }
-
-        private void handleShown(IntPtr instance, IntPtr data, EventHandler<EventArgs> handler)
-        {
-            handler(this, new EventArgs());
-        }
-
         public Container Parent
         {
             get
@@ -98,8 +62,10 @@ namespace Gtk
         {
             get
             {
-                var window = gtk_widget_get_window(handle);
-                return ObjectManager.Resolve<Window>(window);
+                if (Parent == null)
+                    return null;
+
+                return WidgetHelpers.GetWindow(Parent);
             }
 
             set

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static Gtk.Interop.Libraries;
 
 namespace Gtk
 {
@@ -10,9 +11,7 @@ namespace Gtk
     {
         internal static partial class glib
         {
-            public const string GLIB_PATH = @"C:\msys64\mingw64\bin\libglib-2.0-0.dll";
-
-            [DllImport(GLIB_PATH)]
+            [DllImport(GLib)]
             public static unsafe extern uint g_strv_length(char** str_array);
 
             /// <summary>

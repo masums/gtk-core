@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static Gtk.Interop;
+using static Gtk.Interop.Libraries;
 
 namespace Gtk
 {
@@ -12,28 +14,26 @@ namespace Gtk
 
         internal static partial class gobj
         {
-            public const string GOBJECT_PATH = @"C:\msys64\mingw64\bin\libgobject-2.0-0.dll";
-
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern void g_object_unref(IntPtr application);
 
-            [Obsolete("Is no longer part in GTK+ 3.")]
-            [DllImport(GOBJECT_PATH)]
+            [Obsolete("Is no longer supported as of GTK+ 3.")]
+            [DllImport(GObj)]
             public static extern uint g_signal_connect(IntPtr instance, string detailed_signal, IntPtr handler, IntPtr data);
 
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern uint g_signal_connect_data(IntPtr instance, string detailed_signal, IntPtr handler, IntPtr data, GClosureNotify destroy_data, GConnectFlags connect_flags);
 
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern uint g_signal_connect_swapped(IntPtr instance, string detailed_signal, IntPtr handler, IntPtr data);
 
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern uint g_signal_handler_disconnect(IntPtr instance, uint handler_id);
 
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern uint g_object_get_type(IntPtr instance);
 
-            [DllImport(GOBJECT_PATH)]
+            [DllImport(GObj)]
             public static extern IntPtr g_type_name(uint typeId);
 
             public unsafe delegate void GCallback(IntPtr source, IntPtr user_data);

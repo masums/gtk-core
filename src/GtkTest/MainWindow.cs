@@ -28,8 +28,14 @@ namespace GtkTest
             button.Label = "Click me!";
             button.Clicked += Button_Clicked;
             button.Destroyed += Button_Destroyed;
+            button.ButtonPressed += Button_ButtonPressed;
 
             buttonBox.Add(button);
+        }
+
+        private void Button_ButtonPressed(object sender, EventArgs e)
+        {
+            
         }
 
         private void Button_Destroyed(object sender, EventArgs e)

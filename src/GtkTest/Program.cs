@@ -2,7 +2,7 @@
 
 namespace GtkTest
 {
-    public unsafe class Program
+    public class Program
     {
         public static int Main(string[] args)
         {

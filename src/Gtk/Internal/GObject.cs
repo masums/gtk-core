@@ -16,7 +16,7 @@ namespace Gtk.Internal
 
         private Dictionary<object, uint> signalHandlerMap;
 
-        private delegate void SignalHandlerDelegate(IntPtr a, IntPtr b);
+        private delegate void SignalHandlerDelegate(IntPtr arg1, IntPtr arg2, IntPtr arg3);
 
         internal GObject()
         {
@@ -55,7 +55,7 @@ namespace Gtk.Internal
         /// <param name="name"></param>
         /// <param name="eventHandler"></param>
         /// <param name="process"></param>
-        internal void AddSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, EventHandler<TEventArgs>> process)
+        internal void AddSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process = null)
              where TEventArgs : EventArgs
         {
            var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
@@ -73,13 +73,13 @@ namespace Gtk.Internal
             g_signal_handler_disconnect(Handle, handlerId);
         }
 
-        private static IntPtr WrapEventHandler<TEventArgs>(object instance, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, EventHandler<TEventArgs>> process)
+        private static IntPtr WrapEventHandler<TEventArgs>(object instance, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process)
             where TEventArgs : EventArgs
         {
-            var ptr = Marshal.GetFunctionPointerForDelegate<SignalHandlerDelegate>((a, b) => {
+            var ptr = Marshal.GetFunctionPointerForDelegate<SignalHandlerDelegate>((a, b, c) => {
                 if (process != null)
                 {
-                    process(a, b, eventHandler);
+                    process(a, b, c, eventHandler);
                 }
                 else
                 {

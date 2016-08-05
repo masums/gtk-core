@@ -55,7 +55,7 @@ namespace Gtk
             }
         }
 
-        private void handleClicked(IntPtr instance, IntPtr data, EventHandler<EventArgs> handler)
+        private void handleClicked(IntPtr arg1, IntPtr arg2, IntPtr arg3, EventHandler<EventArgs> handler)
         {
             handler(this, new EventArgs());
         }
