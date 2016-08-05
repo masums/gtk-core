@@ -62,7 +62,7 @@ namespace GtkTest
 
         public override int OnActivated(Application application, string[] args)
         {
-            new MainWindow().Show();
+            new MainWindow().ShowAll();
             return 0;
         }
     }
