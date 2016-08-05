@@ -89,6 +89,9 @@ namespace Gtk.Internal
             return ptr;
         }
 
+        /// <summary>
+        /// Gets a safe pointer to the underlying GLib object.
+        /// </summary>
         public unsafe IntPtr Handle
         {
             get

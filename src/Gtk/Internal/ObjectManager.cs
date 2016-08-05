@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Gtk.Internal
 {
     /// <summary>
-    /// Keeps track of all CLR objects that wrap GObject handlers.
+    /// Keeps track of all CLR objects that wrap GObject handles.
     /// </summary>
     internal static class ObjectManager
     {
