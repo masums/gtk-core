@@ -71,7 +71,7 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-            new App().Run(args);
+            Application.Run<App>(args);
 
             return 0;
         }
