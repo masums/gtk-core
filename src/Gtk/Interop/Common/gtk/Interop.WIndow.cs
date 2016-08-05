@@ -24,6 +24,45 @@ namespace Gtk
 
             [DllImport(Libraries.Gtk)]
             public static extern void gtk_window_set_default_size(IntPtr window, int width, int height);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_resize(IntPtr window, int width, int height);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern bool gtk_window_is_active(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern bool gtk_window_close(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_maximize(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_unmaximize(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_fullscreen(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_unfullscreen(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_set_modal(IntPtr window, bool modal);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern bool gtk_window_get_modal(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_set_focus(IntPtr window, IntPtr focus);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern IntPtr gtk_window_get_focus(IntPtr window);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_get_size(IntPtr window, ref int width, ref int height);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern bool gtk_window_is_maximized(IntPtr window);
         }
     }
 }

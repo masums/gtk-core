@@ -30,7 +30,7 @@ namespace Gtk.Internal
             RegisterObject();
         }
 
-        public string GObjectType
+        public string GType
         {
             get
             {

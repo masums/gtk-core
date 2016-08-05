@@ -20,6 +20,12 @@ namespace Gtk
             public static extern void gtk_widget_show_all(IntPtr widget);
 
             [DllImport(Libraries.Gtk)]
+            public static extern void gtk_widget_show_now(IntPtr widget);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_widget_hide(IntPtr widget);
+
+            [DllImport(Libraries.Gtk)]
             public static extern void gtk_widget_destroy(IntPtr widget);
 
             [DllImport(Libraries.Gtk)]

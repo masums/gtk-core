@@ -13,7 +13,7 @@ using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public class ButtonBox : Container
+    public class ButtonBox : Box
     {
         public unsafe ButtonBox() : base()
         {

@@ -10,10 +10,9 @@ namespace GtkTest
             ApplicationId = "org.robertsundstrom.test";
         }
 
-        public override int OnActivated(Application application, string[] args)
+        protected override void OnActivated(object sender, EventArgs e)
         {
-            new MainWindow().Show();
-            return 0;
+            new MainWindow().ShowAll();
         }
     }
 }

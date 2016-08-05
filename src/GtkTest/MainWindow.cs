@@ -18,6 +18,8 @@ namespace GtkTest
         {
             Title = "Test";
 
+            SetDefaultSize(200, 200);
+
             buttonBox = new ButtonBox();
             buttonBox.Name = "buttonBox";
 
@@ -27,25 +29,17 @@ namespace GtkTest
             button.Name = "button";
             button.Label = "Click me!";
             button.Clicked += Button_Clicked;
-            button.Destroyed += Button_Destroyed;
-            button.ButtonPressed += Button_ButtonPressed;
 
             buttonBox.Add(button);
         }
 
-        private void Button_ButtonPressed(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Button_Destroyed(object sender, EventArgs e)
-        {
-            Console.WriteLine((sender as Button).Label);
-        }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
+            var app = Application.Current.ApplicationId;
+
             button.Label = $"{++clicks} click(s)";
+
+            Resize(200, 300);
         }
     }
 }

@@ -14,8 +14,8 @@ namespace Gtk
                 AddSignalHandler<EventArgs>("button-press-event", value, (a1, a2, a3, handler) => {
                     unsafe
                     {
-                    var ev = (Interop.gdk.GdkEventButton*)(void*)a2.ToPointer();
-            }
+                        var ev = (Interop.gdk.GdkEventButton*)(void*)a2.ToPointer();
+                    }
                 });
             }
 

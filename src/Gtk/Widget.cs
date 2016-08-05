@@ -98,6 +98,31 @@ namespace Gtk
             }
         }
 
+        public virtual void Show()
+        {
+            gtk_widget_show(Handle);
+        }
+
+        public virtual void ShowAll()
+        {
+            gtk_widget_show_all(Handle);
+        }
+
+        public virtual void ShowNow()
+        {
+            gtk_widget_show_now(Handle);
+        }
+
+        public virtual void Hide()
+        {
+            gtk_widget_hide(Handle);
+        }
+
+        public void Destory()
+        {
+            gtk_widget_destroy(Handle);
+        }
+
         ~Widget()
         {
             gtk_widget_destroy(handle);

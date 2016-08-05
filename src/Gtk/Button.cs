@@ -14,7 +14,7 @@ using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public class Button : Widget
+    public class Button : Bin
     {
         public unsafe Button() : base()
         {
