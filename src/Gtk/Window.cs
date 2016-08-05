@@ -1,0 +1,57 @@
+﻿using Gtk;
+using Gtk.Internal;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using static Gtk.Interop;
+using static Gtk.Interop.gio;
+using static Gtk.Interop.glib;
+using static Gtk.Interop.gobj;
+using static Gtk.Interop.gtk;
+
+namespace Gtk
+{
+    public class Window : Container
+    {
+        public unsafe Window() : base()
+        {
+            handle = gtk_application_window_new(Application.Current.Handle);
+
+            RegisterObject();
+        }
+
+        public Window(IntPtr handle)
+            : base(handle)
+        {
+
+        }
+
+        public string Title
+        {
+            get
+            {
+                var ptr = gtk_window_get_title(handle);
+                return StringHelpers.Utf8PtrToString(ptr);
+            }
+            set
+            {
+                gtk_window_set_title(handle, value);
+            }
+        }
+
+        public void Show()
+        {
+            gtk_widget_show_all(Handle);
+
+            Application.Current.ActiveWindow = this;
+        }
+
+        public void Close()
+        {
+            gtk_widget_destroy(Handle);
+        }
+    }
+}
