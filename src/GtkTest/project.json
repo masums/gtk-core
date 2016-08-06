@@ -18,5 +18,7 @@
     "netcoreapp1.0": {
       "imports": "dnxcore50"
     }
-  }
+  },
+
+  "include": [ "Content" ]
 }

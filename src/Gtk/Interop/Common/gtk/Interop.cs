@@ -24,6 +24,10 @@ namespace Gtk
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_drawing_area_new();
 
+
+            [DllImport(Libraries.Gtk)]
+            public static extern IntPtr gtk_image_new_from_file(string filename);
+
             public enum GtkWindowType
             {
                 GTK_WINDOW_TOPLEVEL,

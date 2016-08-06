@@ -12,6 +12,7 @@ namespace GtkTest
         private int clicks;
         private DrawingArea drawingArea;
         private Layout layout;
+        private Image image;
 
         public MainWindow()
         {
@@ -26,7 +27,7 @@ namespace GtkTest
 
             //buttonBox = new ButtonBox();
             //buttonBox.Name = "buttonBox";
-            Add(buttonBox);
+            //Add(buttonBox);
 
             layout = new Layout();
             layout.Name = "layout";
@@ -44,6 +45,9 @@ namespace GtkTest
             button.Label = "Click me!";
             button.ButtonReleased += Button_Released;
             button.SetMargin(20, 0);
+
+            image = Image.FromFile("Content/gnome-logo.png");
+            layout.Add(image);
 
             layout.Add(button);
         }
