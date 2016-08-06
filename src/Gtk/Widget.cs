@@ -74,6 +74,11 @@ namespace Gtk
             }
         }
 
+        public void SetSizeRequest(int width, int height)
+        {
+            gtk_widget_set_size_request(handle, width, height);
+        }
+
         internal void SetParentCore(Container parent)
         {
             if (parent == null)
@@ -123,9 +128,34 @@ namespace Gtk
             gtk_widget_destroy(Handle);
         }
 
+        public void QueueDraw()
+        {
+            gtk_widget_queue_draw(Handle);
+        }
+
         ~Widget()
         {
             gtk_widget_destroy(handle);
+        }
+
+        public event EventHandler<CairoEventArgs> Draw
+        {
+            add
+            {
+                AddSignalHandler2<CairoEventArgs>("draw", value, (a1, a2, a3, handler) =>
+                {
+                    var drawingContext = new DrawingContext(a2);
+                    var eventArgs = new CairoEventArgs(drawingContext);
+                    handler(this, eventArgs);
+
+                    return true;
+                });
+            }
+
+            remove
+            {
+                RemoveSignalHandler<CairoEventArgs>(value);
+            }
         }
     }
 }

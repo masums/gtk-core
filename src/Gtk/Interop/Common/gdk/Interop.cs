@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace Gtk
@@ -9,7 +10,8 @@ namespace Gtk
     {
         internal static partial class gdk
         {
-            //[DllImport(Libraries.Gdk)]
+            [DllImport(Libraries.Gdk)]
+            public static extern IntPtr gdk_cairo_create(IntPtr window);
 
             public unsafe struct GdkEventButton
             {

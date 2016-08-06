@@ -18,7 +18,7 @@ namespace Gtk
     {
         public unsafe Window() : base()
         {
-            handle = gtk_application_window_new(Application.Current.Handle);
+            handle = gtk_window_new(GtkWindowType.GTK_WINDOW_TOPLEVEL);
 
             RegisterObject();
         }

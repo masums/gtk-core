@@ -1,4 +1,5 @@
 ﻿using Gtk;
+using Gtk.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,19 +27,20 @@ namespace Gtk
 
         }
 
-        public unsafe void Add(Widget widget)
+        public virtual void Add(Widget widget)
         {
             gtk_container_add(Handle, widget.Handle);
         }
 
-        public unsafe void Remove(Widget widget)
+        public virtual void Remove(Widget widget)
         {
             gtk_container_remove(Handle, widget.Handle);
         }
 
-        public IEnumerable<Widget> GetChildren()
+        public unsafe virtual IEnumerable<Widget> GetChildren()
         {
-            throw new NotImplementedException();
+            var ptr = gtk_container_get_children(handle);
+            return new GCollection<Widget>(ptr);
         }
     }
 }

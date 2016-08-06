@@ -1,13 +1,16 @@
 ﻿using System;
 using Gtk;
+using System.Linq;
 
 namespace GtkTest
 {
-    public class MainWindow : Window
+    public class MainWindow : ApplicationWindow
     {
         ButtonBox buttonBox;
         Button button;
         private int clicks;
+        private DrawingArea drawingArea;
+        private Layout layout;
 
         public MainWindow()
         {
@@ -18,36 +21,45 @@ namespace GtkTest
         {
             Title = "Test";
 
-            SetDefaultSize(200, 200);
+            SetDefaultSize(300, 300);
 
             //buttonBox = new ButtonBox();
             //buttonBox.Name = "buttonBox";
 
-            //Add(buttonBox);
+            layout = new Layout();
+            layout.Name = "layout";
 
-            //button = new Button();
-            //button.Name = "button";
-            //button.Label = "Click me!";
-            //button.Clicked += Button_Clicked;
+            Add(layout);
 
-            //buttonBox.Add(button);
-
-            var drawingArea = new DrawingArea();
+            drawingArea = new DrawingArea();
+            drawingArea.SetSizeRequest(200, 200);
             drawingArea.Draw += DrawingArea_Draw;
-            Add(drawingArea);
+
+            layout.Add(drawingArea);
+
+            button = new Button();
+            button.Name = "button";
+            button.Label = "Click me!";
+            button.Clicked += Button_Clicked;
+
+            layout.Add(button);
+
+            var x = layout.GetChildren().ToArray();
         }
 
-        private void DrawingArea_Draw(object sender, CairoDrawEventArgs e)
+        private void DrawingArea_Draw(object sender, CairoEventArgs e)
         {
-            var ctx = e.Context;
-
-            ctx.SetSourceRgb(0, 0, 0);
-            ctx.SelectFontFace("Sans");
-            ctx.SetFontSize(40.0);
-            ctx.MoveTo(10.0, 50.0);
-            ctx.ShowText("Disziplin ist Macht.");
-
-            ctx.End();
+            using (var ctx = e.GetDrawingContext())
+            {
+                if (clicks == 2)
+                {
+                    ctx.SetSourceRgb(0, 0, 0);
+                    ctx.SelectFontFace("Sans");
+                    ctx.SetFontSize(40.0);
+                    ctx.MoveTo(10.0, 50.0);
+                    ctx.ShowText("Disziplin ist Macht.");
+                }
+            }
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -57,6 +69,8 @@ namespace GtkTest
             button.Label = $"{++clicks} click(s)";
 
             Resize(200, 300);
+
+            drawingArea.QueueDraw();
         }
     }
 }

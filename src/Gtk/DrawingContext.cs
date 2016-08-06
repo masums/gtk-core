@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Gtk
 {
-    public class DrawingContext
+    public class DrawingContext : IDisposable
     {
         private IntPtr handle;
-        internal bool _continue = true;
+        internal bool propagate = false;
 
         public IntPtr Handle
         {
@@ -46,9 +46,10 @@ namespace Gtk
             Gtk.Interop.cairo.cairo_show_text(handle, text);
         }
 
-        public void End()
+        public void Dispose()
         {
-            _continue = false;
+            propagate = false;
+            handle = IntPtr.Zero;
         }
     }
 }

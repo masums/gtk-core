@@ -98,13 +98,5 @@ namespace Gtk
         }
 
         public IEnumerable<Window> Windows { get; }
-
-        public IntPtr Handle
-        {
-            get
-            {
-                return handle;
-            }
-        }
     }
 }

@@ -14,6 +14,9 @@ namespace Gtk
             [DllImport(GLib)]
             public static unsafe extern uint g_strv_length(char** str_array);
 
+            [DllImport(GLib)]
+            public static extern uint g_timeout_add(uint interval, IntPtr function, IntPtr data);
+
             /// <summary>
             /// Flags used to define the behaviour of a GApplication.
             /// </summary>

@@ -14,10 +14,9 @@ using static Gtk.Interop.gtk;
 namespace Gtk.Internal
 {
     unsafe class GCollection<T> : IEnumerable<T>
-           where T : Widget
+           where T : GObject
     {
         private GList* _instance;
-        private List<T> items = new List<T>();
 
         public GCollection(GList* instance)
         {
@@ -26,27 +25,26 @@ namespace Gtk.Internal
 
         public IEnumerator<T> GetEnumerator()
         {
-            return NewMethod().GetEnumerator();
+            return GetItems().GetEnumerator();
         }
 
-        private IEnumerable<T> NewMethod()
+        private IEnumerable<T> GetItems()
         {
             var items = new List<T>();
 
-            var current = _instance->next;
-            while (current != null)
+            var current = _instance;
+
+            while(true)
             {
+                if (current == null)
+                    break;
+
                 var data = current->data;
-                var match = this.items.FirstOrDefault(x => x.Handle == data);
-                if (match != null)
-                {
-                    match = (T)Activator.CreateInstance(typeof(T), new[] { data });
-                    this.items.Add(match);
-                }
+                var match = (T)ObjectManager.Resolve<GObject>(data);
 
                 items.Add(match);
 
-                current = _instance->next;
+                current = current->next;
             }
 
             return items;

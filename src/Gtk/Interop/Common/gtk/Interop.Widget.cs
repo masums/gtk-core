@@ -48,6 +48,21 @@ namespace Gtk
 
             [DllImport(Libraries.Gtk)]
             public static extern uint gtk_widget_get_type(IntPtr widget);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_widget_queue_draw(IntPtr widget);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_widget_queue_draw_area(IntPtr widget,
+                            int x,
+                            int y,
+                            int width,
+                            int height);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_widget_set_size_request(IntPtr widget,
+                          int width,
+                          int height);
         }
     }
 }
