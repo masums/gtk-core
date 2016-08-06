@@ -118,7 +118,7 @@ namespace Gtk
             gtk_widget_hide(Handle);
         }
 
-        public void Destory()
+        public void Destroy()
         {
             gtk_widget_destroy(Handle);
         }

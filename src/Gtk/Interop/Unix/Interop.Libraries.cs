@@ -13,6 +13,8 @@ namespace Gtk
         {
             internal const string Gtk = @"libgtk-3-0.so";
 
+            internal const string Cairo = @"libcairo-2.so";
+
             internal const string Gio = @"libgio-2.0-0.so";
 
             internal const string GLib = @"libglib-2.0-0.so";

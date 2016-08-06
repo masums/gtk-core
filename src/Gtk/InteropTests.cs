@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 using static Gtk.Interop.glib;
 using static Gtk.Interop.gobj;
 using static Gtk.Interop.gio;
 using static Gtk.Interop.gtk;
-using System.Runtime.InteropServices;
+using static Gtk.Interop.cairo;
 using static Gtk.Interop;
 
 namespace Gtk
 {
     public class InteropTests
     {
-        private static void Test1(string[] args)
+        public static void Test1(string[] args)
         {
             IntPtr window;
 
@@ -30,13 +31,26 @@ namespace Gtk
             gtk_main();
         }
 
-        private static int Test2(string[] args)
+        public static int Test2(string[] args)
         {
             IntPtr app;
             int status;
 
             app = gtk_application_new("org.gtk.example", GApplicationFlags.G_APPLICATION_FLAGS_NONE);
             g_signal_connect_data(app, "activate", Marshal.GetFunctionPointerForDelegate<CommonDelegate>(activate2), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
+            status = g_application_run(app, args.Length, args);
+            g_object_unref(app);
+
+            return status;
+        }
+
+        public static int Test3(string[] args)
+        {
+            IntPtr app;
+            int status;
+
+            app = gtk_application_new("org.gtk.example", GApplicationFlags.G_APPLICATION_FLAGS_NONE);
+            g_signal_connect_data(app, "activate", Marshal.GetFunctionPointerForDelegate<CommonDelegate>(activate3), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
             status = g_application_run(app, args.Length, args);
             g_object_unref(app);
 
@@ -82,5 +96,38 @@ namespace Gtk
         delegate void MyDelegate(IntPtr arg);
 
         delegate void MyDelegate2();
+
+        private static void activate3(IntPtr app, IntPtr user_data)
+        {
+            IntPtr window;
+            IntPtr darea;
+
+            window = gtk_application_window_new(app);
+            gtk_window_set_title(window, "Window");
+            gtk_window_set_default_size(window, 200, 200);
+
+            darea = gtk_drawing_area_new();
+            gtk_container_add(window, darea);
+
+            g_signal_connect_data(darea, "draw", Marshal.GetFunctionPointerForDelegate<Drawhandler>(do_draw), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
+            g_signal_connect_data(window, "destroy", Marshal.GetFunctionPointerForDelegate<MyDelegate>(gtk_widget_destroy), window, null, GConnectFlags.G_CONNECT_SWAPPED);
+
+            gtk_widget_show_all(window);
+        }
+
+        private static bool do_draw(IntPtr widget, IntPtr cr)
+        {
+            cairo_set_source_rgb(cr, 0, 0, 0);
+            cairo_select_font_face(cr, "Sans", cairo._cairo_font_slant.CAIRO_FONT_SLANT_NORMAL,
+                cairo.cairo_font_weight_t.CAIRO_FONT_WEIGHT_NORMAL);
+            cairo_set_font_size(cr, 40.0);
+
+            cairo_move_to(cr, 10.0, 50.0);
+            cairo_show_text(cr, "Disziplin ist Macht.");
+
+            return false;
+        }
+
+        delegate bool Drawhandler(IntPtr widget, IntPtr cr);
     }
 }

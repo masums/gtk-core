@@ -1,0 +1,54 @@
+﻿using Gtk.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Gtk
+{
+    public class DrawingContext
+    {
+        private IntPtr handle;
+        internal bool _continue = true;
+
+        public IntPtr Handle
+        {
+            get { return handle; }
+        }
+
+        public DrawingContext(IntPtr handle)
+        {
+            this.handle = handle;
+        }
+
+        public void SetSourceRgb(int r, int g, int b)
+        {
+            Gtk.Interop.cairo.cairo_set_source_rgb(handle, r, g, b);
+        }
+
+        public void SelectFontFace(string family)
+        {
+            Gtk.Interop.cairo.cairo_select_font_face(handle, family, Interop.cairo._cairo_font_slant.CAIRO_FONT_SLANT_NORMAL, Interop.cairo.cairo_font_weight_t.CAIRO_FONT_WEIGHT_NORMAL);
+        }
+
+        public void SetFontSize(double size)
+        {
+            Gtk.Interop.cairo.cairo_set_font_size(handle, size);
+        }
+
+        public void MoveTo(double x, double y)
+        {
+            Gtk.Interop.cairo.cairo_move_to(handle, x, y);
+        }
+
+        public void ShowText(string text)
+        {
+            Gtk.Interop.cairo.cairo_show_text(handle, text);
+        }
+
+        public void End()
+        {
+            _continue = false;
+        }
+    }
+}

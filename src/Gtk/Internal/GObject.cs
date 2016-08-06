@@ -18,6 +18,8 @@ namespace Gtk.Internal
 
         private delegate void SignalHandlerDelegate(IntPtr arg1, IntPtr arg2, IntPtr arg3);
 
+        private delegate bool SignalHandlerDelegate2(IntPtr arg1, IntPtr arg2, IntPtr arg3);
+
         internal GObject()
         {
             this.signalHandlerMap = new Dictionary<object, uint>();
@@ -63,6 +65,21 @@ namespace Gtk.Internal
             signalHandlerMap.Add(eventHandler, handlerId);
         }
 
+        /// <summary>
+        /// Registers a signal handler. 
+        /// </summary>
+        /// <typeparam name="TEventArgs"></typeparam>
+        /// <param name="name"></param>
+        /// <param name="eventHandler"></param>
+        /// <param name="process"></param>
+        internal void AddSignalHandler2<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process = null)
+             where TEventArgs : EventArgs
+        {
+            var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
+
+            signalHandlerMap.Add(eventHandler, handlerId);
+        }
+
         internal void RemoveSignalHandler<TEventArgs>(EventHandler<TEventArgs> eventHandler)
              where TEventArgs : EventArgs
         {
@@ -85,6 +102,26 @@ namespace Gtk.Internal
                 {
                     eventHandler(instance, Activator.CreateInstance<TEventArgs>());
                 }
+            });
+            return ptr;
+        }
+
+        private static IntPtr WrapEventHandler<TEventArgs>(object instance, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process)
+            where TEventArgs : EventArgs
+        {
+            var ptr = Marshal.GetFunctionPointerForDelegate<SignalHandlerDelegate2>((a, b, c) => {
+                bool result = false;
+
+                if (process != null)
+                {
+                    result = process(a, b, c, eventHandler);
+                }
+                else
+                {
+                    eventHandler(instance, Activator.CreateInstance<TEventArgs>());
+                }
+
+                return result;
             });
             return ptr;
         }
