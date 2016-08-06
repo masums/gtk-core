@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-using static Gtk.Interop.glib;
 using static Gtk.Interop.Libraries;
 
 namespace Gtk
@@ -20,7 +19,7 @@ namespace Gtk
             public static extern void gtk_container_remove(IntPtr container, IntPtr widget);
 
             [DllImport(Libraries.Gtk)]
-            public static unsafe extern glib.GList* gtk_container_get_children(IntPtr container);
+            public static unsafe extern IntPtr gtk_container_get_children(IntPtr container);
         }
     }
 }

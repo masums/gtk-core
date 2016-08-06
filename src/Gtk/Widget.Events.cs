@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gdk;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,34 +8,36 @@ namespace Gtk
 {
     public partial class Widget
     {
-        public event EventHandler<EventArgs> ButtonPressed
+        public event EventHandler<ButtonEventArgs> ButtonPressed
         {
             add
             {
-                AddSignalHandler<EventArgs>("button-press-event", value, (a1, a2, a3, handler) => {
-                    unsafe
-                    {
-                        var ev = (Interop.gdk.GdkEventButton*)(void*)a2.ToPointer();
-                    }
+                AddSignalHandler<ButtonEventArgs>("button-press-event", value, (a1, a2, a3, handler) => {
+                    var ev = new ButtonEventArgs(a2);
+                    handler(this, ev);
                 });
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                RemoveSignalHandler<ButtonEventArgs>(value);
             }
         }
 
-        public event EventHandler<EventArgs> ButtonReleased
+        public event EventHandler<ButtonEventArgs> ButtonReleased
         {
             add
             {
-                AddSignalHandler<EventArgs>("button-release-event", value);
+                AddSignalHandler<ButtonEventArgs>("button-release-event", value, (a1, a2, a3, handler) =>
+                {
+                    var ev = new ButtonEventArgs(a2);
+                    handler(this, ev);
+                });
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                RemoveSignalHandler<ButtonEventArgs>(value);
             }
         }
 
@@ -64,16 +67,61 @@ namespace Gtk
             }
         }
 
-        public event EventHandler<EventArgs> Destroyed
+        public event EventHandler<CairoEventArgs> Draw
         {
             add
             {
-                AddSignalHandler<EventArgs>("destroy", value, handleDestroyed);
+                AddSignalHandler2<CairoEventArgs>("draw", value, (a1, a2, a3, handler) =>
+                {
+                    var drawingContext = new DrawingContext(a2);
+                    var eventArgs = new CairoEventArgs(drawingContext);
+                    handler(this, eventArgs);
+
+                    return true;
+                });
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                RemoveSignalHandler<CairoEventArgs>(value);
+            }
+        }
+
+        public event EventHandler<DeleteEventArgs> Delete
+        {
+            add
+            {
+                AddSignalHandler2<DeleteEventArgs>("delete-event", value, (a1, a2, a3, handler) =>
+                {
+                    var eventArgs = new DeleteEventArgs(a2);
+                    handler(this, eventArgs);
+
+                    return true;
+                });
+            }
+
+            remove
+            {
+                RemoveSignalHandler<DeleteEventArgs>(value);
+            }
+        }
+
+        public event EventHandler<DestroyEventArgs> Destroyed
+        {
+            add
+            {
+                AddSignalHandler2<DestroyEventArgs>("destroy-event", value, (a1, a2, a3, handler) =>
+                {
+                    var eventArgs = new DestroyEventArgs(a2);
+                    handler(this, eventArgs);
+
+                    return true;
+                });
+            }
+
+            remove
+            {
+                RemoveSignalHandler<DestroyEventArgs>(value);
             }
         }
 

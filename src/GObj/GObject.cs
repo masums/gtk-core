@@ -1,9 +1,10 @@
-﻿using System;
+﻿using GObj.Internal;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using static Gtk.Interop.gobj;
+using static GObj.Interop.gobj;
 
-namespace Gtk.Internal
+namespace GObj
 {
     /// <summary>
     /// Base class for all GObject. 
@@ -20,12 +21,12 @@ namespace Gtk.Internal
 
         private delegate bool SignalHandlerDelegate2(IntPtr arg1, IntPtr arg2, IntPtr arg3);
 
-        internal GObject()
+        protected GObject()
         {
             this.signalHandlerMap = new Dictionary<object, uint>();
         }
 
-        internal GObject(IntPtr handle) : this()
+        protected GObject(IntPtr handle) : this()
         {
             this.handle = handle;
 
@@ -45,7 +46,7 @@ namespace Gtk.Internal
         /// <summary>
         /// Registers an object to the ObjectManager.
         /// </summary>
-        internal void RegisterObject()
+        protected void RegisterObject()
         {
             ObjectManager.Register(handle, this);
         }
@@ -57,7 +58,7 @@ namespace Gtk.Internal
         /// <param name="name"></param>
         /// <param name="eventHandler"></param>
         /// <param name="process"></param>
-        internal void AddSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process = null)
+        protected void AddSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process = null)
              where TEventArgs : EventArgs
         {
            var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
@@ -72,7 +73,7 @@ namespace Gtk.Internal
         /// <param name="name"></param>
         /// <param name="eventHandler"></param>
         /// <param name="process"></param>
-        internal void AddSignalHandler2<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process = null)
+        protected void AddSignalHandler2<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process = null)
              where TEventArgs : EventArgs
         {
             var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
@@ -80,7 +81,7 @@ namespace Gtk.Internal
             signalHandlerMap.Add(eventHandler, handlerId);
         }
 
-        internal void RemoveSignalHandler<TEventArgs>(EventHandler<TEventArgs> eventHandler)
+        protected void RemoveSignalHandler<TEventArgs>(EventHandler<TEventArgs> eventHandler)
              where TEventArgs : EventArgs
         {
             var handlerId = signalHandlerMap[eventHandler];

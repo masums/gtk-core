@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-using static Gtk.Interop.glib;
 using static Gtk.Interop.Libraries;
 
 namespace Gtk

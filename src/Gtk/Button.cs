@@ -1,4 +1,5 @@
-﻿using Gtk;
+﻿using GObj;
+using Gtk;
 using Gtk.Internal;
 using System;
 using System.Collections;
@@ -8,8 +9,6 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static Gtk.Interop;
 using static Gtk.Interop.gio;
-using static Gtk.Interop.glib;
-using static Gtk.Interop.gobj;
 using static Gtk.Interop.gtk;
 
 namespace Gtk
@@ -46,18 +45,16 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler("clicked", value, handleClicked);
+                AddSignalHandler("clicked", value, (a1, a2, a3, handler) =>
+                {
+                    handler(this, new EventArgs());
+                });
             }
 
             remove
             {
                 RemoveSignalHandler(value);
             }
-        }
-
-        private void handleClicked(IntPtr arg1, IntPtr arg2, IntPtr arg3, EventHandler<EventArgs> handler)
-        {
-            handler(this, new EventArgs());
         }
     }
 }

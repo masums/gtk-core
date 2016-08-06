@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+
 using static Gtk.Interop.Libraries;
 
 namespace Gtk
@@ -11,12 +12,6 @@ namespace Gtk
     {
         internal static partial class glib
         {
-            [DllImport(GLib)]
-            public static unsafe extern uint g_strv_length(char** str_array);
-
-            [DllImport(GLib)]
-            public static extern uint g_timeout_add(uint interval, IntPtr function, IntPtr data);
-
             /// <summary>
             /// Flags used to define the behaviour of a GApplication.
             /// </summary>
@@ -62,13 +57,6 @@ namespace Gtk
                 /// Allow users to override the application ID from the command line with --gapplication-app-id. Since: 2.48
                 /// </summary>
                 G_APPLICATION_CAN_OVERRIDE_APP_ID
-            }
-
-            public unsafe struct GList
-            {
-                public IntPtr data;
-                public GList* next;
-                public GList* prev;
             }
         }
     }

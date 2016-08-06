@@ -1,4 +1,7 @@
-﻿using Gtk;
+﻿using Gdk;
+using GObj;
+using GObj.Internal;
+using Gtk;
 using Gtk.Internal;
 using System;
 using System.Collections;
@@ -6,10 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static Gtk.Interop;
-using static Gtk.Interop.gio;
-using static Gtk.Interop.glib;
-using static Gtk.Interop.gobj;
 using static Gtk.Interop.gtk;
 
 namespace Gtk
@@ -74,6 +73,15 @@ namespace Gtk
             }
         }
 
+        public Gdk.Window GdkWindow
+        {
+            get
+            {
+                var ptr = gtk_widget_get_parent_window(handle);
+                return ObjectManager.Resolve<Gdk.Window>(ptr);
+            }
+        }
+
         public void SetSizeRequest(int width, int height)
         {
             gtk_widget_set_size_request(handle, width, height);
@@ -133,29 +141,37 @@ namespace Gtk
             gtk_widget_queue_draw(Handle);
         }
 
+        public Margin Margin
+        {
+            get
+            {
+                var left = gtk_widget_get_margin_left(handle);
+                var right = gtk_widget_get_margin_right(handle);
+                var top = gtk_widget_get_margin_top(handle);
+                var bottom = gtk_widget_get_margin_bottom(handle);
+                return new Margin(left, right, top, bottom);
+            }
+        }
+
+        public void SetMargin(int leftRight, int topBottom)
+        {
+            gtk_widget_set_margin_left(handle, leftRight);
+            gtk_widget_set_margin_right(handle, leftRight);
+            gtk_widget_set_margin_top(handle, topBottom);
+            gtk_widget_set_margin_bottom(handle, topBottom);
+        }
+
+        public void SetMargin(int left, int right, int top, int bottom)
+        {
+            gtk_widget_set_margin_left(handle, left);
+            gtk_widget_set_margin_right(handle, right);
+            gtk_widget_set_margin_top(handle, top);
+            gtk_widget_set_margin_bottom(handle, bottom);
+        }
+
         ~Widget()
         {
             gtk_widget_destroy(handle);
-        }
-
-        public event EventHandler<CairoEventArgs> Draw
-        {
-            add
-            {
-                AddSignalHandler2<CairoEventArgs>("draw", value, (a1, a2, a3, handler) =>
-                {
-                    var drawingContext = new DrawingContext(a2);
-                    var eventArgs = new CairoEventArgs(drawingContext);
-                    handler(this, eventArgs);
-
-                    return true;
-                });
-            }
-
-            remove
-            {
-                RemoveSignalHandler<CairoEventArgs>(value);
-            }
         }
     }
 }

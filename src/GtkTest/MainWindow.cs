@@ -1,6 +1,7 @@
 ﻿using System;
 using Gtk;
 using System.Linq;
+using Gdk;
 
 namespace GtkTest
 {
@@ -40,18 +41,17 @@ namespace GtkTest
             button = new Button();
             button.Name = "button";
             button.Label = "Click me!";
-            button.Clicked += Button_Clicked;
+            button.ButtonReleased += Button_Clicked;
+            button.SetMargin(20, 0);
 
             layout.Add(button);
-
-            var x = layout.GetChildren().ToArray();
         }
 
         private void DrawingArea_Draw(object sender, CairoEventArgs e)
         {
             using (var ctx = e.GetDrawingContext())
             {
-                if (clicks == 2)
+                if (clicks > 2)
                 {
                     ctx.SetSourceRgb(0, 0, 0);
                     ctx.SelectFontFace("Sans");
@@ -62,10 +62,8 @@ namespace GtkTest
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, ButtonEventArgs e)
         {
-            var app = Application.Current.ApplicationId;
-
             button.Label = $"{++clicks} click(s)";
 
             Resize(200, 300);

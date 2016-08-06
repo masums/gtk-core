@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-using static Gtk.Interop.glib;
 using static Gtk.Interop.Libraries;
 
 namespace Gtk
@@ -66,6 +65,12 @@ namespace Gtk
 
             [DllImport(Libraries.Gtk)]
             public static extern bool gtk_window_set_position(IntPtr window, GtkWindowPosition position);
+
+            // Exists?
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_window_get_position(IntPtr widget,
+             int root_x,
+             int root_y);
 
             public enum GtkWindowPosition
             {

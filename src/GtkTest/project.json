@@ -11,7 +11,7 @@
       "type": "platform",
       "version": "1.0.0"
     },
-    "Gtk":  "1.0.0-*"
+    "Gtk": "1.0.0-*"
   },
 
   "frameworks": {

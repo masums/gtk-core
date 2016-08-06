@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace Gtk.Internal
+namespace GObj
 {
     public static class StringHelpers
     {

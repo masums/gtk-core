@@ -1,4 +1,5 @@
-﻿using Gtk;
+﻿using GObj;
+using Gtk;
 using Gtk.Internal;
 using System;
 using System.Collections;
@@ -8,8 +9,6 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static Gtk.Interop;
 using static Gtk.Interop.gio;
-using static Gtk.Interop.glib;
-using static Gtk.Interop.gobj;
 using static Gtk.Interop.gtk;
 
 namespace Gtk

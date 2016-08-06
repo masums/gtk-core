@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-using static Gtk.Interop.glib;
 using static Gtk.Interop.Libraries;
 
 namespace Gtk
@@ -26,7 +25,7 @@ namespace Gtk
             public static extern void gtk_application_remove_window(IntPtr application, IntPtr window);
 
             [DllImport(Libraries.Gtk)]
-            public static unsafe extern GList* gtk_application_get_windows(IntPtr application);
+            public static unsafe extern IntPtr gtk_application_get_windows(IntPtr application);
 
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_application_get_window_by_id(IntPtr application, uint id);

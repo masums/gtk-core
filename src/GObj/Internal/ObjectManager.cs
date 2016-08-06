@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gtk.Internal
+namespace GObj.Internal
 {
     /// <summary>
     /// Keeps track of all CLR objects that wrap GObject handles.
     /// </summary>
-    internal static class ObjectManager
+    public static class ObjectManager
     {
         private static Dictionary<IntPtr, GObject> _list = new Dictionary<IntPtr, GObject>();
 

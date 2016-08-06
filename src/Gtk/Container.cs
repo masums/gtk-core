@@ -6,11 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static Gtk.Interop;
-using static Gtk.Interop.gio;
-using static Gtk.Interop.glib;
-using static Gtk.Interop.gobj;
 using static Gtk.Interop.gtk;
+using GObj;
 
 namespace Gtk
 {
@@ -40,7 +37,7 @@ namespace Gtk
         public unsafe virtual IEnumerable<Widget> GetChildren()
         {
             var ptr = gtk_container_get_children(handle);
-            return new GCollection<Widget>(ptr);
+            return new GObjectCollection<Widget>(ptr);
         }
     }
 }
