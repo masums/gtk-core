@@ -39,8 +39,11 @@ namespace GObj.Internal
             GObject obj = null;
             if(!_list.TryGetValue(handle, out obj))
             {
-                obj = (T)Activator.CreateInstance(typeof(T), new[] { handle });
-                _list.Add(handle, obj);
+                obj = (T)Activator.CreateInstance(typeof(T), new object [] { handle });
+                if (!_list.TryGetValue(handle, out obj))
+                {
+                    _list.Add(handle, obj);
+                }
             }
 
             return (T)obj;

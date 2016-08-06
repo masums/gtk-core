@@ -26,6 +26,7 @@ namespace GtkTest
 
             //buttonBox = new ButtonBox();
             //buttonBox.Name = "buttonBox";
+            Add(buttonBox);
 
             layout = new Layout();
             layout.Name = "layout";
@@ -41,7 +42,7 @@ namespace GtkTest
             button = new Button();
             button.Name = "button";
             button.Label = "Click me!";
-            button.ButtonReleased += Button_Clicked;
+            button.ButtonReleased += Button_Released;
             button.SetMargin(20, 0);
 
             layout.Add(button);
@@ -62,13 +63,19 @@ namespace GtkTest
             }
         }
 
-        private void Button_Clicked(object sender, ButtonEventArgs e)
+        private void Button_Released(object sender, ButtonEventArgs e)
         {
-            button.Label = $"{++clicks} click(s)";
+            var widget = sender as Widget;
+            var gdkWindow = widget.GdkWindow;
 
-            Resize(200, 300);
+            if (e.Button == Buttons.Left && e.IsButtonRelease)
+            {
+                button.Label = $"{++clicks} click(s)";
 
-            drawingArea.QueueDraw();
+                Resize(200, 300);
+
+                drawingArea.QueueDraw();
+            }
         }
     }
 }

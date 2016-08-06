@@ -3,14 +3,15 @@ using System;
 
 namespace Gdk
 {
-    public class Window : GObject
+
+    public class Device : GObject
     {
-        public Window() : base()
+        public Device() : base()
         {
             RegisterObject();
         }
 
-        public Window(IntPtr handle) : base(handle)
+        public Device(IntPtr handle) : base(handle)
         {
         }
     }
