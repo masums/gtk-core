@@ -1,9 +1,11 @@
 # gtk-core
 GTK Core is a .NET Core binding to the GTK+ GUI toolkit
 
-Compatibility with GTK# would be ideal.
+Kind of like a GTK# re-imagined.
 
-This is just an early conceptual stage.
+Some compatibility with GTK# would be ideal.
+
+This is still just in an early conceptual stage.
 
 ## Sample
 
@@ -55,16 +57,21 @@ namespace GtkTest
         }
     }
     
-    public class App : Application
+    public class App : Gtk.Application
     {
-        public App()
+        public App() 
+            : base("org.robertsundstrom.test", GIO.ApplicationFlags.None)
         {
-            ApplicationId = "org.robertsundstrom.test";
+
         }
 
-        protected override void OnActivated(object sender, EventArgs e)
+        protected override int OnActivated(object sender, EventArgs e)
         {
+            base.OnActivated(sender, e);
+
             new MainWindow().ShowAll();
+
+            return 0;
         }
     }
     
@@ -72,9 +79,15 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-            Application.Run<App>(args);
+            // Application app = new Application("org.robertsundstrom.test", GIO.ApplicationFlags.None);
+            // app.Activated += (s, e) =>
+            // {
+            //     new MainWindow().ShowAll();
+            // };
+            // return app.Run(args);
 
-            return 0;
+            var app = new App();
+            return app.Run(args);
         }
     }
 }
