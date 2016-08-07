@@ -67,7 +67,7 @@ namespace GIO
 
             Activated += OnActivatedCore;
 
-            status = g_application_run(Handle, args.Length, args);
+            status = g_application_run(handle, args.Length, args);
 
             return status;
         }
@@ -87,7 +87,7 @@ namespace GIO
 
         private void handleActivated(IntPtr arg1, IntPtr arg2, IntPtr arg3, EventHandler<EventArgs> handler)
         {
-            OnActivated(this, null);
+            handler(this, EventArgs.Empty);
         }
 
         public static Application Current { get; protected internal set; }

@@ -7,8 +7,8 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-            return StaticInit(args);
-            //return AppInit1(args);
+            //return StaticInit(args);
+            return AppInit1(args);
             //return AppInit2(args);
         }
 
