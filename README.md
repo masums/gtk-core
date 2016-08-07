@@ -12,8 +12,9 @@ This is still just in an early conceptual stage.
 From GtkTest.
 
 ```csharp
-using System;
+using Gdk;
 using Gtk;
+using System;
 
 namespace GtkTest
 {
