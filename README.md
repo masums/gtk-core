@@ -82,5 +82,5 @@ namespace GtkTest
 
 ## References
 
-GTK+ Doc: http://www.gtk.org/documentation.php
-Mono GNOME Doc: http://docs.go-mono.com/index.aspx?link=root:/classlib-gnome
+* GTK+ Doc: http://www.gtk.org/documentation.php
+* Mono GNOME Doc: http://docs.go-mono.com/index.aspx?link=root:/classlib-gnome
