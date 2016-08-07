@@ -21,9 +21,12 @@ namespace Gtk
             [DllImport(Libraries.Gtk)]
             public static extern void gtk_init(int argc, string[] argv);
 
+            [Obsolete]
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_exit(int error_code);
+
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_drawing_area_new();
-
 
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_image_new_from_file(string filename);

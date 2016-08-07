@@ -1,6 +1,4 @@
-﻿using System;
-using Gtk;
-using System.Linq;
+﻿using Gtk;
 using Gdk;
 
 namespace GtkTest
@@ -71,6 +69,11 @@ namespace GtkTest
                     ctx.MoveTo(10.0, 50.0);
                     ctx.ShowText("Disziplin ist Macht.");
                 }
+
+                if(clicks == 5)
+                {
+                    Application.Current.Exit(0);
+                }
             }
         }
 
@@ -82,8 +85,6 @@ namespace GtkTest
             if (e.Button == Buttons.Left && e.IsButtonRelease)
             {
                 button.Label = $"{++clicks} click(s)";
-
-                drawingArea.QueueDraw();
             }
         }
     }

@@ -128,7 +128,7 @@ namespace GObj
         }
 
         /// <summary>
-        /// Gets a safe pointer to the underlying GLib object.
+        /// Gets a managed pointer to the underlying GLib object.
         /// </summary>
         public unsafe IntPtr Handle
         {

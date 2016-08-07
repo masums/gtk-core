@@ -1,21 +1,13 @@
 ﻿using GIO;
-using GObj;
 using GObj.Internal;
-using Gtk;
-using Gtk.Internal;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using static Gtk.Interop;
 using static Gtk.Interop.gio;
 using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public class Application : GIO.Application
+    public partial class Application : GIO.Application
     {
         public Application(string applicationId) : this(applicationId, ApplicationFlags.None)
         {
@@ -34,7 +26,12 @@ namespace Gtk
 
         }
 
-        public Window ActiveWindow
+        internal Application() : base(null, ApplicationFlags.None, false)
+        {
+            
+        }
+
+        public virtual Window ActiveWindow
         {
             get
             {
@@ -43,6 +40,31 @@ namespace Gtk
             }
         }
 
-        public IEnumerable<Window> Windows { get; }
+        public virtual IEnumerable<Window> Windows { get; }
+
+        public static void Init()
+        {
+            Init(null);
+        }
+
+        public static void Init(string[] args)
+        {
+            if (Application.Current != null)
+                throw new InvalidOperationException("Application cannot be initialized when another is already running.");
+
+            Current = new Application.Main();
+
+            gtk_init(args?.Length ?? 0, args);
+        }
+
+        public static void GtkMain()
+        {
+            gtk_main();
+        }
+
+        public static void Exit(int errorCode)
+        {
+            Environment.Exit(errorCode);
+        }
     }
 }

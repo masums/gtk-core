@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using GIO;
 
 namespace Gtk.Internal
 {
@@ -21,6 +22,11 @@ namespace Gtk.Internal
                 parent = widget.Parent;
             }
             return parent as Window;
+        }
+
+        public static bool IsApplicationMain(GIO.Application app)
+        {
+            return app is Application.Main;
         }
     }
 }

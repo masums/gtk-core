@@ -1,20 +1,28 @@
 ﻿using GObj;
 using GObj.Internal;
-using Gtk;
-using Gtk.Internal;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
     public class Window : Bin
     {
-        public unsafe Window() : base()
+        public unsafe Window() : this(true)
+        {
+            _InitializeWindow();
+        }
+
+        protected unsafe Window(bool run) : base()
+        {
+            if(run)
+            {
+                _InitializeWindow();
+            }
+        }
+
+        [DebuggerHidden]
+        protected unsafe void _InitializeWindow()
         {
             handle = gtk_window_new(GtkWindowType.GTK_WINDOW_TOPLEVEL);
 

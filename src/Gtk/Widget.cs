@@ -77,7 +77,7 @@ namespace Gtk
         {
             get
             {
-                var ptr = gtk_widget_get_parent_window(handle);
+                var ptr = gtk_widget_get_window(handle);
                 return ObjectManager.Resolve<Gdk.Window>(ptr);
             }
         }
@@ -118,27 +118,27 @@ namespace Gtk
 
         public virtual void ShowAll()
         {
-            gtk_widget_show_all(Handle);
+            gtk_widget_show_all(handle);
         }
 
         public virtual void ShowNow()
         {
-            gtk_widget_show_now(Handle);
+            gtk_widget_show_now(handle);
         }
 
         public virtual void Hide()
         {
-            gtk_widget_hide(Handle);
+            gtk_widget_hide(handle);
         }
 
         public void Destroy()
         {
-            gtk_widget_destroy(Handle);
+            gtk_widget_destroy(handle);
         }
 
         public void QueueDraw()
         {
-            gtk_widget_queue_draw(Handle);
+            gtk_widget_queue_draw(handle);
         }
 
         public Margin Margin

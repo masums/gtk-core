@@ -11,6 +11,8 @@ namespace Gtk
     {
         internal static class Libraries
         {
+            internal const string Libstdcpp = @"C:\msys64\mingw64\bin\libstdc++-6.dll";
+
             internal const string Gdk = @"C:\msys64\mingw64\bin\libgdk-3.dll";
 
             internal const string Gtk = @"C:\msys64\mingw64\bin\libgtk-3-0.dll";
