@@ -13,7 +13,7 @@ using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public class Label : Widget
+    public class Label : Misc
     {
         public unsafe Label() : base()
         {
@@ -38,6 +38,32 @@ namespace Gtk
             set
             {
                 gtk_label_set_text(handle, value);
+            }
+        }
+
+        public float XAlign
+        {
+            get
+            {
+                return gtk_label_get_xalign(handle);
+            }
+
+            set
+            {
+                gtk_label_set_xalign(handle, value);
+            }
+        }
+
+        public float YAlign
+        {
+            get
+            {
+                return gtk_label_get_yalign(handle);
+            }
+
+            set
+            {
+                gtk_label_set_yalign(handle, value);
             }
         }
     }

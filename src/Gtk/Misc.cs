@@ -25,5 +25,35 @@ namespace Gtk
         {
 
         }
+
+        public Alignment Alignment
+        {
+            get
+            {
+                float xalign, yalign;
+                gtk_misc_get_alignment(handle, out xalign, out yalign);
+                return new Alignment(xalign, yalign);
+            }
+        }
+
+        public void SetAlignment(float xalign, float yalign)
+        {
+            gtk_misc_set_alignment(handle, xalign, yalign);
+        }
+
+        public Padding Padding
+        {
+            get
+            {
+                float xpad, ypad;
+                gtk_misc_get_padding(handle, out xpad, out ypad);
+                return new Padding(xpad, ypad);
+            }
+        }
+
+        public void SetPadding(float xpad, float ypad)
+        {
+            gtk_misc_set_padding(handle, xpad, ypad);
+        }
     }
 }

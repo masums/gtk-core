@@ -13,6 +13,7 @@ namespace GtkTest
         private DrawingArea drawingArea;
         private Layout layout;
         private Image image;
+        private Label label;
 
         public MainWindow()
         {
@@ -33,6 +34,12 @@ namespace GtkTest
             layout.Name = "layout";
 
             Add(layout);
+
+            label = new Label();
+            label.Text = "test";
+            label.SetMargin(20, 40);
+
+            layout.Add(label);
 
             drawingArea = new DrawingArea();
             drawingArea.SetSizeRequest(200, 200);
@@ -75,8 +82,6 @@ namespace GtkTest
             if (e.Button == Buttons.Left && e.IsButtonRelease)
             {
                 button.Label = $"{++clicks} click(s)";
-
-                Resize(200, 300);
 
                 drawingArea.QueueDraw();
             }

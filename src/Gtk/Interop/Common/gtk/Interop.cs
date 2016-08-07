@@ -28,6 +28,26 @@ namespace Gtk
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_image_new_from_file(string filename);
 
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_misc_set_alignment(IntPtr misc,
+                        float xalign,
+                        float yalign);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_misc_set_padding(IntPtr misc,
+                        float xpad,
+                        float ypad);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_misc_get_alignment(IntPtr misc,
+                    out float xalign,
+                    out float yalign);
+
+            [DllImport(Libraries.Gtk)]
+            public static extern void gtk_misc_get_padding(IntPtr misc,
+                       out float xpad,
+                       out float ypad);
+
             public enum GtkWindowType
             {
                 GTK_WINDOW_TOPLEVEL,
