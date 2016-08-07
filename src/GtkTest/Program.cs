@@ -7,11 +7,14 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-            //InteropTests.Test3(args);
+            //Application app = new Application("org.robertsundstrom.test", GIO.ApplicationFlags.None);
+            //app.Activated += (s, e) =>
+            //{
+            //    new MainWindow().ShowAll();
+            //};
 
-            Application.Run<App>(args);
-
-            return 0;
+            var app = new App();
+            return app.Run(args);
         }
     }
 }

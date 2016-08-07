@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static GIO.Interop;
 
-using static Gtk.Interop.Libraries;
-
-namespace Gtk
+namespace GIO
 {
     internal static partial class Interop
     {
-        internal static partial class glib
+        internal static partial class gio
         {
+            [DllImport(Libraries.Gio)]
+            public static extern  IntPtr g_application_new(string application_id, GApplicationFlags flags);
+
+            [DllImport(Libraries.Gio)]
+            public static extern int g_application_run(IntPtr application, int argc, string[] argv);
+
+            [DllImport(Libraries.Gio)]
+            public static extern IntPtr g_application_get_application_id(IntPtr application);
+
+            [DllImport(Libraries.Gio)]
+            public static extern void g_application_set_application_id(IntPtr application, string application_id);
+
             /// <summary>
             /// Flags used to define the behaviour of a GApplication.
             /// </summary>

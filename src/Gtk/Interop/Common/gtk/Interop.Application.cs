@@ -13,7 +13,7 @@ namespace Gtk
         internal static partial class gtk
         {
             [DllImport(Libraries.Gtk)]
-            public static extern IntPtr gtk_application_new(string application_id, glib.GApplicationFlags flags);
+            public static extern IntPtr gtk_application_new(string application_id, gio.GApplicationFlags flags);
 
             [DllImport(Libraries.Gtk)]
             public static extern IntPtr gtk_application_window_new(IntPtr application);

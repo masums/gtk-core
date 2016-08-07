@@ -1,18 +1,25 @@
 ﻿using System;
-using Gtk;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GtkTest
 {
-    public class App : Application
+    public class App : Gtk.Application
     {
-        public App()
+        public App() 
+            : base("org.robertsundstrom.test", GIO.ApplicationFlags.None)
         {
-            ApplicationId = "org.robertsundstrom.test";
+
         }
 
-        protected override void OnActivated(object sender, EventArgs e)
+        protected override int OnActivated(object sender, EventArgs e)
         {
+            base.OnActivated(sender, e);
+
             new MainWindow().ShowAll();
+
+            return 0;
         }
     }
 }

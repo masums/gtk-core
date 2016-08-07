@@ -58,7 +58,7 @@ namespace GObj
         /// <param name="name"></param>
         /// <param name="eventHandler"></param>
         /// <param name="process"></param>
-        protected void AddSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process = null)
+        protected void RegisterSignalHandler<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Action<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>> process = null)
              where TEventArgs : EventArgs
         {
            var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
@@ -73,7 +73,7 @@ namespace GObj
         /// <param name="name"></param>
         /// <param name="eventHandler"></param>
         /// <param name="process"></param>
-        protected void AddSignalHandler2<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process = null)
+        protected void RegisterSignalHandlerWithReturnValue<TEventArgs>(string name, EventHandler<TEventArgs> eventHandler, Func<IntPtr, IntPtr, IntPtr, EventHandler<TEventArgs>, bool> process = null)
              where TEventArgs : EventArgs
         {
             var handlerId = g_signal_connect_data(handle, name, WrapEventHandler(this, eventHandler, process), IntPtr.Zero, null, GConnectFlags.G_CONNECT_AFTER);
@@ -81,7 +81,7 @@ namespace GObj
             signalHandlerMap.Add(eventHandler, handlerId);
         }
 
-        protected void RemoveSignalHandler<TEventArgs>(EventHandler<TEventArgs> eventHandler)
+        protected void UnregisterSignalHandler<TEventArgs>(EventHandler<TEventArgs> eventHandler)
              where TEventArgs : EventArgs
         {
             var handlerId = signalHandlerMap[eventHandler];
@@ -111,7 +111,7 @@ namespace GObj
             where TEventArgs : EventArgs
         {
             var ptr = Marshal.GetFunctionPointerForDelegate<SignalHandlerDelegate2>((a, b, c) => {
-                bool result = false;
+                bool result = true;
 
                 if (process != null)
                 {

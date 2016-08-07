@@ -12,7 +12,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler<ButtonEventArgs>("button-press-event", value, (a1, a2, a3, handler) => {
+                RegisterSignalHandler<ButtonEventArgs>("button-press-event", value, (a1, a2, a3, handler) => {
                     var ev = new ButtonEventArgs(a2);
                     handler(this, ev);
                 });
@@ -20,7 +20,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler<ButtonEventArgs>(value);
+                UnregisterSignalHandler<ButtonEventArgs>(value);
             }
         }
 
@@ -28,7 +28,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler<ButtonEventArgs>("button-release-event", value, (a1, a2, a3, handler) =>
+                RegisterSignalHandler<ButtonEventArgs>("button-release-event", value, (a1, a2, a3, handler) =>
                 {
                     var ev = new ButtonEventArgs(a2);
                     handler(this, ev);
@@ -37,7 +37,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler<ButtonEventArgs>(value);
+                UnregisterSignalHandler<ButtonEventArgs>(value);
             }
         }
 
@@ -45,12 +45,12 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler<EventArgs>("child-notify", value);
+                RegisterSignalHandler<EventArgs>("child-notify", value);
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                UnregisterSignalHandler<EventArgs>(value);
             }
         }
 
@@ -58,12 +58,12 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler<EventArgs>("composited-changed", value);
+                RegisterSignalHandler<EventArgs>("composited-changed", value);
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                UnregisterSignalHandler<EventArgs>(value);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler2<CairoEventArgs>("draw", value, (a1, a2, a3, handler) =>
+                RegisterSignalHandlerWithReturnValue<CairoEventArgs>("draw", value, (a1, a2, a3, handler) =>
                 {
                     var drawingContext = new DrawingContext(a2);
                     var eventArgs = new CairoEventArgs(drawingContext);
@@ -83,7 +83,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler<CairoEventArgs>(value);
+                UnregisterSignalHandler<CairoEventArgs>(value);
             }
         }
 
@@ -91,7 +91,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler2<DeleteEventArgs>("delete-event", value, (a1, a2, a3, handler) =>
+                RegisterSignalHandlerWithReturnValue<DeleteEventArgs>("delete-event", value, (a1, a2, a3, handler) =>
                 {
                     var eventArgs = new DeleteEventArgs(a2);
                     handler(this, eventArgs);
@@ -102,7 +102,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler<DeleteEventArgs>(value);
+                UnregisterSignalHandler<DeleteEventArgs>(value);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler2<DestroyEventArgs>("destroy-event", value, (a1, a2, a3, handler) =>
+                RegisterSignalHandlerWithReturnValue<DestroyEventArgs>("destroy-event", value, (a1, a2, a3, handler) =>
                 {
                     var eventArgs = new DestroyEventArgs(a2);
                     handler(this, eventArgs);
@@ -121,7 +121,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler<DestroyEventArgs>(value);
+                UnregisterSignalHandler<DestroyEventArgs>(value);
             }
         }
 
@@ -129,12 +129,12 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler<EventArgs>("show", value, handleShown);
+                RegisterSignalHandler<EventArgs>("show", value, handleShown);
             }
 
             remove
             {
-                RemoveSignalHandler<EventArgs>(value);
+                UnregisterSignalHandler<EventArgs>(value);
             }
         }
 

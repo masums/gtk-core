@@ -6,11 +6,10 @@
   },
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Gdk": "1.0.0-*",
     "GLib": "1.0.0-*",
-    "GObj": "1.0.0-*",
-    "GIO": "1.0.0-*"
+    "GObj": "1.0.0-*"
   },
+
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"

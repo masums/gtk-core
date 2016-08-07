@@ -45,7 +45,7 @@ namespace Gtk
         {
             add
             {
-                AddSignalHandler("clicked", value, (a1, a2, a3, handler) =>
+                RegisterSignalHandler("clicked", value, (a1, a2, a3, handler) =>
                 {
                     handler(this, new EventArgs());
                 });
@@ -53,7 +53,7 @@ namespace Gtk
 
             remove
             {
-                RemoveSignalHandler(value);
+                UnregisterSignalHandler(value);
             }
         }
     }
