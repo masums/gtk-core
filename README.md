@@ -5,7 +5,29 @@ Kind of like a GTK# re-imagined.
 
 Some compatibility with GTK# would be ideal.
 
-This is still just in an early conceptual stage.
+This is still just in an early conceptual stage, and building the solution is not as straight forward as it could be.
+
+
+## Install native dependencies
+
+### Windows with MSYS2
+
+Download and install MSYS2: https://msys2.github.io/
+
+**GTK3**
+```
+pacman -S gtk3
+```
+
+### macOS with Homebrew
+
+Download and install Homebrew: http://brew.sh/
+
+**GTK3**
+```
+brew install gtk+3
+```
+
 
 ## Sample
 
