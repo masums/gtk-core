@@ -5,11 +5,17 @@
     "define": [ "WIN10_X64" ]
   },
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    
   },
 
   "frameworks": {
-    "netstandard1.6": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      },
       "imports": "dnxcore50"
     }
   }

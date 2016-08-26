@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static GIO.Interop;
+using static Gio.Interop;
 
-namespace GIO
+namespace Gio
 {
     internal static partial class Interop
     {

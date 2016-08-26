@@ -1,8 +1,8 @@
 ﻿using System;
 using GObj;
-using static GIO.Interop.gio;
+using static Gio.Interop.gio;
 
-namespace GIO
+namespace Gio
 {
     public class Application : GObject
     {

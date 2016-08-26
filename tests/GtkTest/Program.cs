@@ -7,6 +7,8 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
+Console.WriteLine("Hello");
+
             //return StaticInit(args);
             return AppInit1(args);
             //return AppInit2(args);
@@ -43,7 +45,7 @@ namespace GtkTest
         /// <returns></returns>
         private static int AppInit1(string[] args)
         {
-            Application app = new Application("org.robertsundstrom.test", GIO.ApplicationFlags.None);
+            Application app = new Application("org.robertsundstrom.test", Gio.ApplicationFlags.None);
             app.Activated += (s, e) =>
             {
                 new MainWindow().ShowAll();

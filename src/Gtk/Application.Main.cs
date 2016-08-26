@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Gtk
 {
-    public partial class Application : GIO.Application
+    public partial class Application : Gio.Application
     {
         internal class Main : Application
         {

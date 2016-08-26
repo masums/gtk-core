@@ -8,7 +8,7 @@ namespace GtkTest
     public class App : Gtk.Application
     {
         public App() 
-            : base("org.robertsundstrom.test", GIO.ApplicationFlags.None)
+            : base("org.robertsundstrom.test", Gio.ApplicationFlags.None)
         {
 
         }

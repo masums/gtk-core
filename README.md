@@ -61,7 +61,7 @@ namespace GtkTest
     public class App : Gtk.Application
     {
         public App() 
-            : base("org.robertsundstrom.test", GIO.ApplicationFlags.None)
+            : base("org.robertsundstrom.test", Gio.ApplicationFlags.None)
         {
 
         }
@@ -80,7 +80,7 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-            // Application app = new Application("org.robertsundstrom.test", GIO.ApplicationFlags.None);
+            // Application app = new Application("org.robertsundstrom.test", Gio.ApplicationFlags.None);
             // app.Activated += (s, e) =>
             // {
             //     new MainWindow().ShowAll();

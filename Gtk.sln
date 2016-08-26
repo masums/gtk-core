@@ -23,7 +23,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GLib", "src\GLib\GLib.xproj
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GObj", "src\GObj\GObj.xproj", "{F1E5BE67-BC9A-4006-9DC9-67C78904519E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GIO", "src\GIO\GIO.xproj", "{E3136312-5F6E-48A8-BD09-341244BCA94B}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Gio", "src\Gio\Gio.xproj", "{E3136312-5F6E-48A8-BD09-341244BCA94B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

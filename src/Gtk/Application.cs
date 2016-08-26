@@ -1,4 +1,4 @@
-﻿using GIO;
+﻿using Gio;
 using GObj.Internal;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using static Gtk.Interop.gtk;
 
 namespace Gtk
 {
-    public partial class Application : GIO.Application
+    public partial class Application : Gio.Application
     {
         public Application(string applicationId) : this(applicationId, ApplicationFlags.None)
         {
