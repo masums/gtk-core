@@ -7,7 +7,7 @@ namespace GtkTest
     {
         public static int Main(string[] args)
         {
-Console.WriteLine("Hello");
+            Console.WriteLine("Hello");
 
             //return StaticInit(args);
             return AppInit1(args);

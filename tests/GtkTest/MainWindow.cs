@@ -64,7 +64,7 @@ namespace GtkTest
                 if (clicks > 2)
                 {
                     ctx.SetSourceRgb(0, 0, 0);
-                    ctx.SelectFontFace("Sans");
+                    ctx.SelectFontFace("Arial");
                     ctx.SetFontSize(40.0);
                     ctx.MoveTo(10.0, 50.0);
                     ctx.ShowText("Disziplin ist Macht.");

@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/tests/GtkTest/bin/Debug/netcoreapp1.0/GtkTest.dll",
+            "program": "${workspaceRoot}/tests/GtkTest/bin/Debug/netcoreapp1.6/GtkTest.dll",
             "args": [],
             "cwd": "${workspaceRoot}",
             "externalConsole": false,
