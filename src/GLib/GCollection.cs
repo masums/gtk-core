@@ -8,50 +8,6 @@ using static GLib.Interop.glib;
 
 namespace GLib
 {
-    public unsafe class Node
-    {
-        private GList* handle;
-        private Node next;
-        private Node prev;
-
-        public Node(IntPtr handle)
-        {
-            this.handle = (GList*)handle;
-        }
-
-        public IntPtr Data
-        {
-            get
-            {
-                return handle->data;
-            }
-        }
-
-        public Node Prev
-        {
-            get
-            {
-                if(prev == null)
-                {
-                    prev = new Node((IntPtr)handle->prev);
-                }
-                return prev;
-            }
-        }
-
-        public Node Next
-        {
-            get
-            {
-                if (next == null)
-                {
-                    next = new Node((IntPtr)handle->next);
-                }
-                return next;
-            }
-        }
-    }
-
     public unsafe class GCollection<T> : IEnumerable<T>
     {
         private Node _instance;
@@ -61,7 +17,7 @@ namespace GLib
             _instance = new Node((IntPtr)instance);
         }
 
-        public Node Instance
+        protected Node Instance
         {
             get
             {
@@ -82,6 +38,50 @@ namespace GLib
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        protected unsafe class Node
+        {
+            private GList* handle;
+            private Node next;
+            private Node prev;
+
+            public Node(IntPtr handle)
+            {
+                this.handle = (GList*)handle;
+            }
+
+            public IntPtr Data
+            {
+                get
+                {
+                    return handle->data;
+                }
+            }
+
+            public Node Prev
+            {
+                get
+                {
+                    if (prev == null)
+                    {
+                        prev = new Node((IntPtr)handle->prev);
+                    }
+                    return prev;
+                }
+            }
+
+            public Node Next
+            {
+                get
+                {
+                    if (next == null)
+                    {
+                        next = new Node((IntPtr)handle->next);
+                    }
+                    return next;
+                }
+            }
         }
     }
 }

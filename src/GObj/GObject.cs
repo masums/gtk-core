@@ -138,16 +138,6 @@ namespace GObj
             }
         }
 
-        public override int GetHashCode()
-        {
-            return handle.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
         ~GObject()
         {
             ObjectManager.Unregister(handle);
