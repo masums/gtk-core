@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using static GObj.Interop.gobj;
+using static Interop.gobj;
 
 namespace GObj
 {

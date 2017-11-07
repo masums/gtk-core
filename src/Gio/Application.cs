@@ -1,6 +1,6 @@
 ﻿using System;
 using GObj;
-using static Gio.Interop.gio;
+using static Interop.gio;
 
 namespace Gio
 {

@@ -2,7 +2,7 @@
 using GObj.Internal;
 using System;
 using System.Diagnostics;
-using static Gtk.Interop.gtk;
+using static Interop.gtk;
 
 namespace Gtk
 {

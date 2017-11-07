@@ -2,8 +2,8 @@
 using GObj.Internal;
 using System;
 using System.Collections.Generic;
-using static Gtk.Interop.gio;
-using static Gtk.Interop.gtk;
+using static Interop.gio;
+using static Interop.gtk;
 
 namespace Gtk
 {

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Gtk\Gtk.csproj" />
+    <ProjectReference Include="..\..\src\GObj\GObj.csproj" />
+    <ProjectReference Include="..\..\src\Gio\Gio.csproj" />
+    <ProjectReference Include="..\..\src\Gdk\Gdk.csproj" />
+    <ProjectReference Include="..\..\src\GLib\GLib.csproj" />
+  </ItemGroup>
+</Project>

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static Gtk.Interop;
-using static Gtk.Interop.gio;
-using static Gtk.Interop.gtk;
+
+using static Interop.gio;
+using static Interop.gtk;
 
 namespace Gtk
 {

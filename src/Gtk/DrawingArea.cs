@@ -6,7 +6,7 @@ namespace Gtk
     {
         public DrawingArea() : base()
         {
-            handle = Gtk.Interop.gtk.gtk_drawing_area_new();
+            handle = Interop.gtk.gtk_drawing_area_new();
 
             RegisterObject();
         }

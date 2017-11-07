@@ -5,11 +5,11 @@ namespace Gdk
 
     public unsafe class ButtonEventArgs : GdkEventArgs
     {
-        private Gdk.Interop.gdk.GdkEventButton* structure;
+        private Interop.gdk.GdkEventButton* structure;
 
         public ButtonEventArgs(IntPtr handle) : base(handle)
         {
-            structure = (Gdk.Interop.gdk.GdkEventButton*)(void*)handle;
+            structure = (Interop.gdk.GdkEventButton*)(void*)handle;
         }
 
         public bool IsButtonPress

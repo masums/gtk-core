@@ -4,10 +4,10 @@
 //using System.Threading.Tasks;
 //using System.Runtime.InteropServices;
 
-//using static Gtk.Interop.gio;
-//using static Gtk.Interop.gtk;
-//using static Gtk.Interop.cairo;
-//using static Gtk.Interop;
+//using static Interop.gio;
+//using static Interop.gtk;
+//using static Interop.cairo;
+//
 
 //namespace Gtk
 //{

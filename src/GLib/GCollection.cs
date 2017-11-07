@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static GLib.Interop.glib;
+using static Interop.glib;
 
 namespace GLib
 {

@@ -1,6 +1,6 @@
 ﻿using GObj.Internal;
 using System;
-using static Gtk.Interop.gtk;
+using static Interop.gtk;
 
 
 namespace Gtk
