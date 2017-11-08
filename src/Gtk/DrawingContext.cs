@@ -46,6 +46,10 @@ namespace Gtk
             Interop.cairo.cairo_show_text(handle, text);
         }
 
+        public void Rectangle() {
+            
+        }
+
         public void Dispose()
         {
             propagate = false;

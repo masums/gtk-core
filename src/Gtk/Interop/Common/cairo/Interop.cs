@@ -23,6 +23,36 @@ namespace Interop
         [DllImport(Libraries.Cairo)]
         public static extern void cairo_move_to(IntPtr cr, double x, double y);
 
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_rectangle(IntPtr cr,
+                 double x,
+                 double y,
+                 double width,
+                 double height);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_rel_line_to(IntPtr cr, double dx, double dy);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_close_path(IntPtr cr);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_stroke_preserve(IntPtr cr);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_fill(IntPtr cr);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_set_line_width(IntPtr cr, int widith);
+
+        [DllImport(Libraries.Cairo)]
+        public static extern void cairo_arc(IntPtr cr,
+           double xc,
+           double yc,
+           double radius,
+           double angle1,
+           double angle2);
+
         public enum _cairo_font_slant
         {
             CAIRO_FONT_SLANT_NORMAL,
