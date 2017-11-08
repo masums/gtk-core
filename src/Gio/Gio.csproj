@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <DefineConstants>$(DefineConstants);MACOS</DefineConstants>
+    <DefineConstants>$(DefineConstants)</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>Gio</AssemblyName>
     <PackageId>Gio</PackageId>

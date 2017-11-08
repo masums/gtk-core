@@ -7,8 +7,8 @@ using static Interop.gobj;
 namespace GObj
 {
     /// <summary>
-    /// Base class for all GObject. 
-    /// This class should not be derived from outside of this library. 
+    /// Base class for all GObject.
+    /// This class should not be derived from outside of this library.
     /// Constructors have been marked as internal.
     /// </summary>
     public abstract class GObject
@@ -52,7 +52,7 @@ namespace GObj
         }
 
         /// <summary>
-        /// Registers a signal handler. 
+        /// Registers a signal handler.
         /// </summary>
         /// <typeparam name="TEventArgs"></typeparam>
         /// <param name="name"></param>
@@ -67,7 +67,7 @@ namespace GObj
         }
 
         /// <summary>
-        /// Registers a signal handler. 
+        /// Registers a signal handler.
         /// </summary>
         /// <typeparam name="TEventArgs"></typeparam>
         /// <param name="name"></param>

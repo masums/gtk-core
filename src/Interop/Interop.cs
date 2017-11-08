@@ -20,6 +20,22 @@ namespace Interop
 
 #endif
 
+#if LINUX
+
+        internal const string Gdk = @"/usr/lib/x86_64-linux-gnu/libgdk-3.so.";
+
+        internal const string Gtk = @"/usr/lib/x86_64-linux-gnu/libgtk-3.so";
+
+        internal const string Cairo = @"/usr/lib/x86_64-linux-gnu/libcairo.so";
+
+        internal const string Gio = @"/usr/lib/x86_64-linux-gnu/libgio-2.0.so";
+
+        internal const string GLib = @"/usr/lib/x86_64-linux-gnu/libglib-2.0.so";
+
+        internal const string GObj = @"/usr/lib/x86_64-linux-gnu/libgobject-2.0.so";
+
+#endif
+
 #if WIN64
 
         // TODO: Update these paths

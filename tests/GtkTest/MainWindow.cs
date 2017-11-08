@@ -5,8 +5,8 @@ namespace GtkTest
 {
     public class MainWindow : ApplicationWindow
     {
-        ButtonBox buttonBox;
-        Button button;
+        private ButtonBox buttonBox;
+        private Button button;
         private int clicks;
         private DrawingArea drawingArea;
         private Layout layout;
@@ -35,7 +35,7 @@ namespace GtkTest
 
             label = new Label();
             label.Text = "test";
-            label.SetMargin(20, 40);
+            label.SetMargin(50, 70);
 
             layout.Add(label);
 
@@ -63,7 +63,7 @@ namespace GtkTest
             {
                 if (clicks > 2)
                 {
-                    ctx.SetSourceRgb(0, 0, 0);
+                    ctx.SetSourceRgb(255, 255, 255);
                     ctx.SelectFontFace("Arial");
                     ctx.SetFontSize(40.0);
                     ctx.MoveTo(10.0, 50.0);
@@ -86,6 +86,8 @@ namespace GtkTest
             {
                 button.Label = $"{++clicks} click(s)";
             }
+
+            drawingArea.QueueDraw();
         }
     }
 }
