@@ -9,7 +9,7 @@ namespace Interop
     internal static partial class cairo
     {
         [DllImport(Libraries.Cairo)]
-        public static extern void cairo_set_source_rgb(IntPtr cr, int r, int g, int b);
+        public static extern void cairo_set_source_rgb(IntPtr cr, double r, double g, double b);
 
         [DllImport(Libraries.Cairo)]
         public static extern void cairo_select_font_face(IntPtr cr, string family, _cairo_font_slant slant, cairo_font_weight_t weight);

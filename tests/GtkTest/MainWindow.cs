@@ -40,7 +40,7 @@ namespace GtkTest
             layout.Add(label);
 
             drawingArea = new DrawingArea();
-            drawingArea.SetSizeRequest(200, 200);
+            drawingArea.SetSizeRequest(300, 300);
             drawingArea.Draw += DrawingArea_Draw;
 
             layout.Add(drawingArea);
@@ -61,9 +61,18 @@ namespace GtkTest
         {
             using (var ctx = e.GetDrawingContext())
             {
+                ctx.SetSourceRgb(0.6, 0.6, 0.6);
+                ctx.SetLineWidth(1);
+
+                ctx.DrawRectangle(20, 20, 120, 80);
+                ctx.StrokePreserve();
+                ctx.Fill();
+
+                return;
+
+                /*
                 if (clicks > 2)
                 {
-                    ctx.SetSourceRgb(255, 255, 255);
                     ctx.SelectFontFace("Arial");
                     ctx.SetFontSize(40.0);
                     ctx.MoveTo(10.0, 50.0);
@@ -74,6 +83,7 @@ namespace GtkTest
                 {
                     Application.Current.Exit(0);
                 }
+                */
             }
         }
 

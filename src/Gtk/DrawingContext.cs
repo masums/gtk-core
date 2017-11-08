@@ -21,7 +21,7 @@ namespace Gtk
             this.handle = handle;
         }
 
-        public void SetSourceRgb(int r, int g, int b)
+        public void SetSourceRgb(double r, double g, double b)
         {
             Interop.cairo.cairo_set_source_rgb(handle, r, g, b);
         }
@@ -46,8 +46,24 @@ namespace Gtk
             Interop.cairo.cairo_show_text(handle, text);
         }
 
-        public void Rectangle() {
-            
+        public void DrawRectangle(double x, double y, double width, double height) 
+        {
+            Interop.cairo.cairo_rectangle(handle, x, y, width, height);
+        }
+
+        public void SetLineWidth(int width) 
+        {
+            Interop.cairo.cairo_set_line_width(handle, width);
+        }
+
+        public void StrokePreserve()
+        {
+            Interop.cairo.cairo_stroke_preserve(handle);
+        }
+
+        public void Fill()
+        {
+            Interop.cairo.cairo_fill(handle);
         }
 
         public void Dispose()
