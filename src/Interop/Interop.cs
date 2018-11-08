@@ -52,7 +52,7 @@ namespace Interop
 
         internal const string GLib = @"C:\msys64\mingw64\bin\libglib-2.0-0.dll";
 
-        iinternal const string GObj = @"C:\msys64\mingw64\bin\libgobject-2.0-0.dll";
+        internal const string GObj = @"C:\msys64\mingw64\bin\libgobject-2.0-0.dll";
 
 #endif
     }

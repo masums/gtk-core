@@ -1,4 +1,6 @@
-﻿using Gtk;
+﻿#define WIN64
+
+using Gtk;
 using System;
 
 namespace GtkTest

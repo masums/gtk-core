@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F9E71AB-015A-4B72-BA68-C99F4BB9E7B3}"
 EndProject
@@ -12,76 +12,79 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BC2B2C1-66F0-4DD2-AD4E-03FC117DBEFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gio", "src\Gio\Gio.csproj", "{2196A00E-FAD6-4327-9665-5909AACCFD94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gio", "src\Gio\Gio.csproj", "{2196A00E-FAD6-4327-9665-5909AACCFD94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLib", "src\GLib\GLib.csproj", "{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLib", "src\GLib\GLib.csproj", "{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gtk", "src\Gtk\Gtk.csproj", "{D84713AE-F53E-45C8-B477-1DFF450FF882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gtk", "src\Gtk\Gtk.csproj", "{D84713AE-F53E-45C8-B477-1DFF450FF882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GObj", "src\GObj\GObj.csproj", "{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GObj", "src\GObj\GObj.csproj", "{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gdk", "src\Gdk\Gdk.csproj", "{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gdk", "src\Gdk\Gdk.csproj", "{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtkTest", "tests\GtkTest\GtkTest.csproj", "{C710072E-62F9-4BAB-971F-57D9BC1DB584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtkTest", "tests\GtkTest\GtkTest.csproj", "{C710072E-62F9-4BAB-971F-57D9BC1DB584}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Interop", "src\Interop\Interop.shproj", "{34A3E802-0F81-425F-928E-7C29D5995D32}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\Interop\Interop.projitems*{34a3e802-0f81-425f-928e-7c29d5995d32}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug (Linux)|Any CPU = Debug (Linux)|Any CPU
+		Debug (MacOS)|Any CPU = Debug (MacOS)|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-		Debug (MacOS)|Any CPU = Debug (MacOS)|Any CPU
-		Debug (Linux)|Any CPU = Debug (Linux)|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{2196A00E-FAD6-4327-9665-5909AACCFD94}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
+		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{8F857B35-7EC3-4EFF-801C-EF0AC52D73EF}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
+		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{D84713AE-F53E-45C8-B477-1DFF450FF882}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
+		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{B7D76EF2-E317-4EEC-BD33-2A3DBC2AA355}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
+		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
+		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (Linux)|Any CPU.ActiveCfg = Debug|Any CPU
+		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (Linux)|Any CPU.Build.0 = Debug|Any CPU
+		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (MacOS)|Any CPU.ActiveCfg = Debug|Any CPU
+		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (MacOS)|Any CPU.Build.0 = Debug|Any CPU
 		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (MacOS)|Any CPU.ActiveCfg = Debug (MacOS)|Any CPU
-		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (MacOS)|Any CPU.Build.0 = Debug (MacOS)|Any CPU
-		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (Linux)|Any CPU.ActiveCfg = Debug (Linux)|Any CPU
-		{C710072E-62F9-4BAB-971F-57D9BC1DB584}.Debug (Linux)|Any CPU.Build.0 = Debug (Linux)|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +97,8 @@ Global
 		{DCA18B6F-B485-4E5E-AEDD-DEE0AB39FD32} = {1F9E71AB-015A-4B72-BA68-C99F4BB9E7B3}
 		{C710072E-62F9-4BAB-971F-57D9BC1DB584} = {2BC2B2C1-66F0-4DD2-AD4E-03FC117DBEFD}
 		{34A3E802-0F81-425F-928E-7C29D5995D32} = {1F9E71AB-015A-4B72-BA68-C99F4BB9E7B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47B51E1A-9F2B-4848-B598-523F9F1F8E44}
 	EndGlobalSection
 EndGlobal
