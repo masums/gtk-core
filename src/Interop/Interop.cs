@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define WIN64
+
+using System;
 
 namespace Interop
 {
